@@ -86,11 +86,10 @@ function addNewKitten(event) {
   const valuePhoto = inputPhoto.value;
   const valueName = inputName.value;
   const newKittenDataObject = {
-    image:
-      'https://www.bing.com/images/search?view=detailV2&ccid=j8dl6xMH&id=9F6A61E25EE0322CC04A032393F9B593E867B32D&thid=OIP.j8dl6xMHcaYa9Fh9HiCjmgHaEo&mediaurl=https%3a%2f%2funusualpetsguide.com%2fwp-content%2fuploads%2f2020%2f11%2fcolored-maine-coon-edited.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.8fc765eb130771a61af4587d1e20a39a%3frik%3dLbNn6JO1%252bZMjAw%26pid%3dImgRaw%26r%3d0&exph=1600&expw=2560&q=maine+coon&simid=608002034858295020&FORM=IRPRST&ck=11EAB8370F09AF1A07BC5EA71DF41A26&selectedIndex=0',
-    name: 'Nina',
-    desc: 'Amistosa, de color gris y ojos verdes',
-    race: 'Callejera',
+    image: inputPhoto.value,
+    name: inputName.value,
+    desc: inputDesc.value,
+    race: inputRace.value,
   };
   if (valueDesc === '' || valuePhoto === '' || valueName === '') {
     labelMessageError.innerHTML = '¡Uy! parece que has olvidado algo';
@@ -100,6 +99,32 @@ function addNewKitten(event) {
   kittenDataList.push(newKittenDataObject);
   renderKittenList(kittenDataList);
 }
+
+
+
+
+
+function filterKitten(ev) {}
+
+
+
+const descKitten = kittenDataList.filter((objdesc) => objdesc.desc.);
+  
+  
+  console.log(descKitten);
+
+  
+  //Modifica el código:
+  //Haz un filter sobre el listado de gatitos
+  //Vuelve a pintar el listado de gatitos filtrados en el HTML.
+
+  ///renderKittenList(descKitten);
+
+
+
+
+
+
 
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
