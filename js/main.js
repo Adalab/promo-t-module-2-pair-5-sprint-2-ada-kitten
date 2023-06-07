@@ -14,6 +14,7 @@ const inputRace = document.querySelector('.js-input-race');
 const linkNewFormElememt = document.querySelector('.js-button-new-form');
 const labelMessageError = document.querySelector('.js-label-error');
 const input_search_desc = document.querySelector('.js_in_search_desc');
+const input_search_race = document.querySelector('js_input_search_race');
 
 //Objetos con cada gatito
 const kittenData_1 = {
@@ -35,6 +36,7 @@ const kittenData_3 = {
   race: 'Maine Coon',
 };
 
+//array
 const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 
 //Funciones
@@ -79,6 +81,7 @@ function handleClickNewCatForm(event) {
     hideNewCatForm();
   }
 }
+
 //Adicionar nuevo gatito
 function addNewKitten(event) {
   event.preventDefault();
@@ -100,29 +103,18 @@ function addNewKitten(event) {
   renderKittenList(kittenDataList);
 }
 
-
-
-
-
-function filterKitten(ev) {
-
-const descKitten = kittenDataList.filter((objdesc) => objdesc.desc);
-  
-  
-  console.log(descKitten);
-
-  
+/*function filterKitten(ev) {
+  event.PreventDefault();
+  const descKitten = kittenDataList.filter((objdesc) =>
+    objdesc.desc.includes('ojos')
+  );
   //Modifica el código:
   //Haz un filter sobre el listado de gatitos
   //Vuelve a pintar el listado de gatitos filtrados en el HTML.
-
   renderKittenList(descKitten);
-
-
+  console.log(filterKitten);
 }
-
-
-
+*/
 
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
@@ -140,6 +132,18 @@ function filterKitten(event) {
   listElement.innerHTML = '';
   for (const kittenItem of kittenDataList) {
     if (kittenItem.desc.includes(descrSearchText)) {
+      listElement.innerHTML += renderKitten(kittenItem);
+    }
+  }
+}
+
+//Filtrar por raza=>aún no funciona, hay que modificarle algo, ya le cree la clase de js para llamarla y puse la variable arriba.
+function filterKittenRace(event) {
+  event.preventDefault();
+  const raceSearchText = input_search_race.value;
+  listElement.innerHTML = '';
+  for (const kittenItem of kittenDataList) {
+    if (kittenItem.race.includes(raceSearchText)) {
       listElement.innerHTML += renderKitten(kittenItem);
     }
   }
