@@ -104,20 +104,17 @@ function addNewKitten(event) {
   renderKittenList(kittenDataList);
 }
 
- function filterKitten(event) {
+function filterKitten(event) {
   event.preventDefault();
-  console.log("Hola que pasa");
+  console.log('Hola que pasa');
 
-   
   const kittenListFiltered = kittenDataList
-    .filter((objrace) => objrace.race === 'Siamés' )
+    .filter((objrace) => objrace.race === 'Siamés')
     .filter((objdesc) => objdesc.desc.includes('x'));
-  
+
   renderKittenList(kittenListFiltered);
   console.log(kittenListFiltered);
 }
-
-
 
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
@@ -144,25 +141,20 @@ function filterKitten(event) {
 
 //Mostrar el litado de gatitos en ell HTML
 //renderKittenList(kittenDataList);
-//Fetch 
+//Fetch
 
+const userGitHub = 'CCarolinaFranco';
+const url = `https://dev.adalab.es/api/kittens/CCarolinaFrancogithub`;
+///funcion de fetch
 
+//data=>respuesta del servidor, la información que me devuelve el servidor
+function fetchkitten() {
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => (document.body.innerHTML = data.kittenDataList));
 
-const GITHUB_USER = '<CCarolinaFranco>';
-const SERVER_URL = `https://dev.adalab.es/api/kittens/CCarolinaFrancogithub`;
-///funcion de fetch 
-
-function fetchkitten(){
-   fetch('https://dev.adalab.es/api/kittens/CCarolinaFrancogithub')
-   .then((response) => response.json())
-   .then((data) => (document.body.innerHTML = data.kittenDataList));
-
-   renderKittenList(kittenDataList)
-
+  renderKittenList(kittenDataList);
 }
-
-
-
 
 //Eventos
 linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
