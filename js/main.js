@@ -105,19 +105,22 @@ function addNewKitten(event) {
 
 
 function filterKitten(ev) {
+  for ( const eachkittenDataList of kittenDataList) {
+    eachkittenDataList.filter((objdata) => objdata.desc.);()
+    console.log('eachkittenDataList');
+  
+  
+  }
 
-const descKitten = kittenDataList.filter((objdesc) => objdesc.desc);
-  
-  
-  console.log(descKitten);
+//const descKitten = kittenDataList.filter((objdata) => objdata.race.toUpperCase());
+
 
   
   //Modifica el código:
   //Haz un filter sobre el listado de gatitos
   //Vuelve a pintar el listado de gatitos filtrados en el HTML.
 
-  renderKittenList(descKitten);
-
+  //renderKittenList(descKitten);
 
 }
 
