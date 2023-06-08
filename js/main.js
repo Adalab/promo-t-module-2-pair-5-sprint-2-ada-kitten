@@ -37,7 +37,8 @@ const kittenData_3 = {
 };
 
 //array
-const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+//const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+let kittenDataList = [];
 
 //Funciones
 function renderKitten(kittenData) {
@@ -103,18 +104,20 @@ function addNewKitten(event) {
   renderKittenList(kittenDataList);
 }
 
-/*function filterKitten(ev) {
-  event.PreventDefault();
-  const descKitten = kittenDataList.filter((objdesc) =>
-    objdesc.desc.includes('ojos')
-  );
-  //Modifica el código:
-  //Haz un filter sobre el listado de gatitos
-  //Vuelve a pintar el listado de gatitos filtrados en el HTML.
-  renderKittenList(descKitten);
-  console.log(filterKitten);
+ function filterKitten(event) {
+  event.preventDefault();
+  console.log("Hola que pasa");
+
+   
+  const kittenListFiltered = kittenDataList
+    .filter((objrace) => objrace.race === 'Siamés' )
+    .filter((objdesc) => objdesc.desc.includes('x'));
+  
+  renderKittenList(kittenListFiltered);
+  console.log(kittenListFiltered);
 }
-*/
+
+
 
 //Cancelar la búsqueda de un gatito
 function cancelNewKitten(event) {
@@ -124,7 +127,7 @@ function cancelNewKitten(event) {
   inputPhoto.value = '';
   inputName.value = '';
 }
-
+/*
 //Filtrar por descripción
 function filterKitten(event) {
   event.preventDefault();
@@ -137,20 +140,29 @@ function filterKitten(event) {
   }
 }
 
-//Filtrar por raza=>aún no funciona, hay que modificarle algo, ya le cree la clase de js para llamarla y puse la variable arriba.
-function filterKittenRace(event) {
-  event.preventDefault();
-  const raceSearchText = input_search_race.value;
-  listElement.innerHTML = '';
-  for (const kittenItem of kittenDataList) {
-    if (kittenItem.race.includes(raceSearchText)) {
-      listElement.innerHTML += renderKitten(kittenItem);
-    }
-  }
-}
+*/
 
 //Mostrar el litado de gatitos en ell HTML
-renderKittenList(kittenDataList);
+//renderKittenList(kittenDataList);
+//Fetch 
+
+
+
+const GITHUB_USER = '<CCarolinaFranco>';
+const SERVER_URL = `https://dev.adalab.es/api/kittens/CCarolinaFrancogithub`;
+///funcion de fetch 
+
+function fetchkitten(){
+   fetch('https://dev.adalab.es/api/kittens/CCarolinaFrancogithub')
+   .then((response) => response.json())
+   .then((data) => (document.body.innerHTML = data.kittenDataList));
+
+   renderKittenList(kittenDataList)
+
+}
+
+
+
 
 //Eventos
 linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
