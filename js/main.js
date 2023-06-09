@@ -145,16 +145,44 @@ function filterKitten(event) {
 
 const userGitHub = 'CCarolinaFranco';
 const url = `https://dev.adalab.es/api/kittens/CCarolinaFrancogithub`;
-///funcion de fetch
 
 //data=>respuesta del servidor, la información que me devuelve el servidor
-function fetchkitten() {
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => (document.body.innerHTML = data.kittenDataList));
 
-  renderKittenList(kittenDataList);
-}
+ function fetchkitten (){
+  fetch(url)
+  
+    .then((response) => response.json())
+    .then((data) => { 
+      console.log(data)
+      kittenDataList = data.results
+    renderKittenList(kittenDataList);
+    localStorage.setItem('kittensList', JSON.stringify (kittenDataList))
+
+    })}
+    
+    
+  ///Almacenar gatos al local storage
+
+    const kittenListStored = JSON.parse(localStorage.getItem('kittensList'));
+
+    if (kittenListStored) {
+      //si existe el listado de gatitos en el local storage
+      // vuelve a pintar el listado de gatitos
+      //...
+      //completa el código...
+
+      kittenDataList = kittenListStored;
+      renderKittenList( kittenDataList );
+
+    } else {
+      fetchkitten ()
+
+      //sino existe el listado de gatitos en el local storage
+      //haz la petición al servidor
+      
+    }
+    
+
 
 //Eventos
 linkNewFormElememt.addEventListener('click', handleClickNewCatForm);
